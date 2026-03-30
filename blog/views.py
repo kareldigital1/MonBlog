@@ -14,7 +14,7 @@ class ArticleList(ListView):
     context_object_name = 'articles'
 
 # afficher les details d'un article
-class ArticleDetail(LoginRequiredMixin, DetailView):
+class ArticleDetail(DetailView):
     model = Article
     template_name = 'article_detail.html'
     context_object_name = 'article'
@@ -24,20 +24,20 @@ class ArticleCreate(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'article_form.html'
     fields = ['headline', 'content', 'image', 'status', 'categorie']
-    success_url = '/dashboard/'
+    success_url = '/articles/'
 
 # modifier un article
 class ArticleUpdate(LoginRequiredMixin, UpdateView):
     model = Article
     template_name = 'article_form.html'
     fields = ['headline', 'content', 'image', 'status', 'categorie']
-    success_url = '/dashboard/' 
+    success_url = '/articles/' 
 
 # supprimer un article
 class ArticleDelete(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'article_delete.html'
-    success_url = '/dashboard/'
+    success_url = '/articles/'
 
 
 # Create  views of Categorie.
@@ -46,20 +46,20 @@ class CategorieCreate(LoginRequiredMixin, CreateView):
     model = Categorie
     template_name = 'categorie_form.html'
     fields = ['name']
-    success_url = '/dashboard/'
+    success_url = '/categories/'
 
 # modifier une categorie
 class CategorieUpdate(LoginRequiredMixin, UpdateView):
     model = Categorie
     template_name = 'categorie_form.html'
     fields = ['name']
-    success_url = '/dashboard/'
+    success_url = '/categories/'
 
 # supprimer une categorie
 class CategorieDelete(LoginRequiredMixin, DeleteView):  
     model = Categorie
     template_name = 'categorie_delete.html'
-    success_url = '/dashboard/'    
+    success_url = '/categories/'    
 
 class Gestarticle(LoginRequiredMixin, ListView):
     model = Article
