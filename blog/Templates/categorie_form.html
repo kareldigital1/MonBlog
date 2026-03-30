@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--  Ajouter/Modifier Catégorie -->
+<div class="container" style="width: 50%; height: 100%;">
+    <div class="row mt-5 mb-5 ml-5 mr-5 shadow-lg radius-5 p-4">
+                <div class="form">
+                    <h1 class="p-2">Ajouter/Modifier Catégorie</h1>
+                        <form method="POST" action="{% if object %}{% url 'categorie_update' object.pk %}{% else %}{% url 'categorie_create' %}{% endif %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="col-sm-10 p-2 ml-auto ">
+                                <button type="delete" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>
+                
+        </div>                 
+    </div>                     
+</div>        
+{% endblock %} 
+
+

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .form-group label {
+        color: rgb(78, 76, 76);
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form input[type="password"],
+    .form input[type="date"],
+    .form input[type="time"],
+    .form input[type="datetime-local"],
+    .form input[type="number"],
+    .form input[type="file"],
+    .form textarea,
+    .form select {
+        width: 100%;
+        padding: 4px 8px;
+        border: 1px solid rgb(212, 209, 209);
+        border-radius: 5px;
+        font-size: 15px;
+        font-family: inherit;
+    }
+
+    .form textarea {
+        resize: vertical;
+        min-height: 50px;
+    }
+
+    .form select {
+        cursor: pointer;
+    }
+
+    .form-text {
+        font-size: 0.85rem;
+        color: rgb(206, 200, 200);
+    }
+
+    .alert-danger {
+        color: rgb(188, 56, 56);
+        background-color: rgb(229, 171, 171);
+        border: 1px solid rgb(229, 171, 171);
+        font-size: 20px;
+        padding: 4px 8px;
+    }
+</style>
+
+<!--  Ajouter/Modifier Article -->
+<div class="container" style="width: 50%;">
+    <div class="row mt-5 mb-5 ml-5 mr-5 shadow-lg radius-5 p-4"> 
+        <div class="form">
+                <h1 class="p-2"> Ajouter/Modifier Article</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group mb-3">
+                        {% if field.label %}
+                            <label for="{{ field.id_for_label }}" class="form-label fw-bold">
+                                {{ field.label }}
+                            </label>
+                        {% endif %}
+                        
+                        {% if field.field.widget.input_type == 'textarea' %}
+                            {{ field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                                                            
+                        {% if field.errors %}
+                            <div class="alert alert-danger mt-2 mb-0">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                    <div class="col-sm-8 p-2 ml-auto ">
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                    </div>
+            </form>
+        </div>                 
+    </div>                     
+</div>        
+{% endblock %} 
+
+

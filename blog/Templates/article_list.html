@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid py-5 bg-dark text-white">
+  <div class="container">
+    <h2 class="text-center text-uppercase" style="color:rgba(208, 140, 12, 0.934); letter-spacing: 6px; font-weight:600;">
+      Tous Nos Articles en ligne
+    </h2>
+
+    <div class="row g-4 mt-4">
+      {% for article in articles %}
+        {% if article.status %}
+          <div class="col-md-6 col-lg-4">
+            <div class="card bg-black border-0 shadow" style="overflow:hidden; border-radius:8px;">
+              {% if article.image %}
+              <img src="{{ article.image.url }}" class="card-img-top" style="height:250px; object-fit:cover;" alt="{{ article.headline }}">
+              {% endif %}
+              <div class="card-body" style="border-top:1px solid rgba(255,255,255,.08);">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h5 class="card-title mb-0" style="color: black;">
+                    {{ article.headline }}
+                  </h5>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <a class="btn btn-secondary btn-hero" href="{% url 'article_detail' article.id %}">Voir les détails <i class="bi bi-arrow-right me-1"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% empty %}
+      <div class="col-12">
+        <p class="text-muted text-center">Aucun article disponible pour le moment.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

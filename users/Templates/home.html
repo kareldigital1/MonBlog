@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+  .home-hero {
+    min-height: 80vh;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    position: relative;
+  }
+  .home-hero .hero-content {
+    max-width: 900px;
+    text-align: center;
+    padding: 2rem;
+    backdrop-filter: blur(1px);
+  }
+  .home-hero .hero-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: rgba(208, 140, 12, 0.934);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+ 
+  .card {
+    background-color: rgba(50, 42, 7, 0.167);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+  }
+  .card:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), 0 0 20px rgba(241, 213, 93, 0.35);
+    border-color: rgba(208, 140, 12, 0.934);
+    cursor: pointer;
+  }
+  .card-img-top {
+    transition: transform 0.35s ease;
+  }
+  .card:hover .card-img-top {
+    transform: scale(1.08);
+  }
+</style>
+
+<section class="home-hero">
+  <div class="hero-content text-center">
+    <p class="hero-subtitle">Bienvenue sur le blog de KStalk</p>
+    <h1 class="hero-title">
+        Découvrez des articles de tout genre sur notre plateforme.
+    </h1>
+  </div>
+</section>
+<div class="container-fluid py-5 bg-dark text-white">
+  <div class="container">
+        <h2 class="text-center text-uppercase" style="color:rgba(208, 140, 12, 0.934); letter-spacing: 6px; font-weight:600;">
+      Nos Articles
+    </h2>
+    <h3 class="text-center mb-4" style="font-family:'Playfair Display', serif; font-weight:500; font-size:3.2rem;">
+      Découvrez tous nos articles et restez informé des dernières tendances.
+    </h3>
+
+    <div class="text-center mt-5">
+      <a class="btn btn-outline-warning px-5 py-3" href="{% url 'article_list' %}" style="font-weight:700; letter-spacing:0.08em;">
+        Voir tous les articles
+      </a>
+    </div>
+
+  </div>
+</div>
+
+  
+{% endblock %}

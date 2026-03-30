@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="width: 50%;">
+    <div class="card shadow">
+        <div class="card-body text-center">
+            
+            <h4 class="text-danger mb-3">
+                Voulez-vous vraiment supprimer cet article ?
+            </h4>
+
+            <p><strong>{{ article.headline }}</strong></p>
+            <p><strong>{{ article.content }}</strong></p>
+
+            <form method="POST">
+                {% csrf_token %}
+                
+                <button type="submit" class="btn btn-danger">
+                    <i class="fa fa-trash me-2"></i> Supprimer
+                </button>
+
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    Annuler
+                </a>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

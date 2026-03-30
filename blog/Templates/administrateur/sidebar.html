@@ -1,0 +1,17 @@
+    <div class="bg-dark text-white p-4" style="width: 250px; min-height: 100vh;">
+        <h4 class="text-center mb-4">My Blog</h4>
+        <hr>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a href="{% url 'dashboard' %}" class="nav-link text-white"><i class="bi bi-speedometer2"></i> &nbsp;Dashboard</a>
+                <a href="{% url 'gestarticle' %}" class="nav-link text-white"><i class="bi bi-file-earmark"></i> &nbsp;Article</a>
+                <a href="{% url 'gestcategorie' %}" class="nav-link text-white"><i class="bi bi-folder"></i> &nbsp;Categorie</a>
+            </li>
+        </ul>
+         <hr>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a href="{% url 'logout_view' %}" class="nav-link text-danger" style="font-weight: bold;"><i class="bi bi-box-arrow-right"></i> &nbsp;Deconnexion</a>
+            </li>
+        </ul>
+    </div>
